@@ -34,7 +34,7 @@ const Menu = () => {
             <Input
               value={searchTerm}
               color="gray.300"
-              placeholder="Search component…"
+              placeholder="Najít komponent…"
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
                 setSearchTerm(event.target.value)
               }

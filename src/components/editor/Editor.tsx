@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { Box, Text, Link } from '@chakra-ui/react'
+import { Box, BoxProps, Text } from '@chakra-ui/react'
 import { useDropComponent } from '~hooks/useDropComponent'
 import SplitPane from 'react-split-pane'
 import CodePanel from '~components/CodePanel'
@@ -17,7 +17,11 @@ export const gridStyles = {
   p: 10,
 }
 
-const Editor: React.FC = () => {
+type Props = {
+  wrpProps?: BoxProps
+  isRenderer?: boolean
+}
+const Editor: React.FC<Props> = ({ wrpProps, isRenderer = false }) => {
   const showCode = useSelector(getShowCode)
   const showLayout = useSelector(getShowLayout)
   const components = useSelector(getComponents)
@@ -40,6 +44,7 @@ const Editor: React.FC = () => {
   editorBackgroundProps = {
     ...editorBackgroundProps,
     ...rootProps,
+    ...wrpProps,
   }
 
   const Playground = (
@@ -60,18 +65,7 @@ const Editor: React.FC = () => {
     >
       {isEmpty && (
         <Text maxWidth="md" color="gray.400" fontSize="xl" textAlign="center">
-          Drag some component to start coding without code! Or load{' '}
-          <Link
-            color="gray.500"
-            onClick={(e: React.MouseEvent) => {
-              e.stopPropagation()
-              dispatch.components.loadDemo('onboarding')
-            }}
-            textDecoration="underline"
-          >
-            the onboarding components
-          </Link>
-          .
+          Přesuňte sem nějakou komponentu
         </Text>
       )}
 

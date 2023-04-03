@@ -21,6 +21,7 @@ export const useInteractive = (
 
   const [, drag] = useDrag({
     item: { id: component.id, type: component.type, isMoved: true },
+    canDrag: () => showLayout
   })
 
   const ref = useRef<HTMLDivElement>(null)
@@ -55,7 +56,7 @@ export const useInteractive = (
     }
   }
 
-  if (isHovered || isComponentSelected) {
+  if (showLayout && (isHovered || isComponentSelected)) {
     props = {
       ...props,
       boxShadow: `${focusInput ? '#ffc4c7' : '#4FD1C5'} 0px 0px 0px 2px inset`,

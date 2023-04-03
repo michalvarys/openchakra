@@ -38,6 +38,7 @@ import { generateComponentCode, formatCode } from '~utils/code'
 import useClipboard from '~hooks/useClipboard'
 import { useInspectorUpdate } from '~contexts/inspector-context'
 import { componentsList } from '~componentsList'
+import { useRouter } from 'next/router'
 
 const CodeActionButton = memo(() => {
   const [isLoading, setIsLoading] = useState(false)
@@ -76,6 +77,9 @@ CodeActionButton.displayName = 'CodeActionButton'
 
 const Inspector = () => {
   const dispatch = useDispatch()
+  const router = useRouter()
+  const { page } = router.query
+  const [pageName, setPageName] = useState(page)
   const component = useSelector(getSelectedComponent)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [componentName, onChangeComponentName] = useState('')
@@ -128,7 +132,7 @@ const Inspector = () => {
           justifyContent="space-between"
           flexDir="column"
         >
-          {isRoot ? 'Document' : type}
+          {isRoot ? `Page ${pageName ? '- ' + pageName : ''}` : type}
           {!!component.componentName && (
             <Text fontSize="xs" fontWeight="light">
               {component.componentName}

@@ -86,7 +86,7 @@ const CustomPropsPanel = () => {
         >
           <SimpleGrid width="100%" columns={2} spacing={1}>
             <Box fontWeight="bold">{propsName}</Box>
-            <Box>{props[propsName]}</Box>
+            <Box>{typeof props[propsName] === 'object' ? JSON.stringify(props[propsName]) : props[propsName]}</Box>
           </SimpleGrid>
 
           <ButtonGroup display="flex" size="xs" isAttached>

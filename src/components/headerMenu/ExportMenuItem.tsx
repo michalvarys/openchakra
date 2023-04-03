@@ -1,18 +1,20 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { MenuItem, Box } from '@chakra-ui/react'
+import { MenuItem, Box, useDisclosure } from '@chakra-ui/react'
 import { FaSave } from 'react-icons/fa'
-import { saveAsJSON } from '~utils/import'
-import { getComponents } from '~core/selectors/components'
+import { SaveModal } from './SaveModal'
 
 const ExportMenuItem = () => {
-  const components = useSelector(getComponents)
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <MenuItem onClick={() => saveAsJSON(components)}>
-      <Box mr={2} as={FaSave} />
-      Save components
-    </MenuItem>
+    <>
+      <MenuItem onClick={onOpen}>
+        <Box mr={2} as={FaSave} />
+        Uložit aplikaci
+      </MenuItem>
+
+      <SaveModal isOpen={isOpen} onClose={onClose} />
+    </>
   )
 }
 

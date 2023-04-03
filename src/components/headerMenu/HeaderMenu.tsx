@@ -54,15 +54,15 @@ const HeaderMenu = () => {
         variant="ghost"
         colorScheme="gray"
       >
-        Editor
+        Soubor
       </CustomMenuButton>
       <Portal>
         <LightMode>
           <MenuList bg="white" zIndex={999}>
             <ExportMenuItem />
-            <ImportMenuItem />
+            {/* <ImportMenuItem /> */}
 
-            <MenuDivider />
+            {/* <MenuDivider />
 
             <MenuItemLink
               isExternal
@@ -84,7 +84,7 @@ const HeaderMenu = () => {
             <MenuItemLink isExternal href="https://v1.openchakra.app">
               <Box mr={2} as={GoArchive} />
               Chakra v1 Editor
-            </MenuItemLink>
+            </MenuItemLink> */}
           </MenuList>
         </LightMode>
       </Portal>

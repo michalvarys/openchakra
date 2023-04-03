@@ -17,6 +17,10 @@ const app = createModel({
     overlay: undefined,
   } as AppState,
   reducers: {
+    setRenderMode(state:AppState): AppState
+    {
+      return {...state, showLayout: false}
+    },
     toggleBuilderMode(state: AppState): AppState {
       return {
         ...state,

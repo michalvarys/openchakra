@@ -138,7 +138,7 @@ const Header = () => {
           aria-label="Chakra UI, Back to homepage"
         >
           <Box fontSize="2xl" as={AiFillThunderbolt} mr={1} color="teal.100" />{' '}
-          <Box fontWeight="bold">open</Box>chakra
+          <Box fontWeight="bold">No-code</Box>
         </Flex>
 
         <Flex flexGrow={1} justifyContent="space-between" alignItems="center">
@@ -146,6 +146,8 @@ const Header = () => {
             <Box>
               <HeaderMenu />
             </Box>
+
+            {/** */}
             <FormControl flexDirection="row" display="flex" alignItems="center">
               <Tooltip
                 zIndex={100}
@@ -200,10 +202,12 @@ const Header = () => {
                 />
               </LightMode>
             </FormControl>
+            {/** */}
           </HStack>
 
           <Stack direction="row">
-            <CodeSandboxButton />
+            {/** */<CodeSandboxButton />/** */}
+
             <Popover>
               {({ onClose }) => (
                 <>
@@ -250,6 +254,7 @@ const Header = () => {
           </Stack>
         </Flex>
 
+        {/** */}
         <Stack
           justifyContent="flex-end"
           width="13rem"
@@ -260,6 +265,7 @@ const Header = () => {
           <Link isExternal href="https://github.com/premieroctet/openchakra">
             <Box as={DiGithubBadge} size={32} color="gray.200" />
           </Link>
+
           <Box lineHeight="shorter" color="white" fontSize="xs">
             by{' '}
             <Link isExternal href="https://premieroctet.com" color="teal.100">
@@ -267,6 +273,7 @@ const Header = () => {
             </Link>
           </Box>
         </Stack>
+        {/** */}
       </Flex>
     </DarkMode>
   )
